@@ -1,4 +1,3 @@
-//% weight=0 color=#3CB371 icon="\uf2db" block="sensors"
 namespace sensors {
 
     function signal_dht11(pin: DigitalPin): void {
@@ -19,14 +18,14 @@ namespace sensors {
         let value = 0;
         let counter = 0;
 
-        for (let i = 0; i <= 32 - 1; i++) {
+        for (let j = 0; j <= 32 - 1; j++) {
             while (pins.digitalReadPin(pin) == 0);
             counter = 0
             while (pins.digitalReadPin(pin) == 1) {
                 counter += 1;
             }
             if (counter > 4) {
-                value = value + (1 << (31 - i));
+                value = value + (1 << (31 - j));
             }
         }
         return value;
